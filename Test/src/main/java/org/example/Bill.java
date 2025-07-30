@@ -12,16 +12,46 @@ public class Bill {
      */
 
     // TODO: Add instance variables
-
+    public String customer;
+    public Map<String, BigDecimal> products;
 
     // TODO: Implement two constructors (default [no params] and with params [HINT: Look at the tests ;-D])
 
 
-    // TODO: Implement getters and setters
+    public Bill(String customer, Map<String, BigDecimal> products) {
+        this.customer = customer;
+        this.products = products;
+    }
 
+    public Bill() {
+    }
+// TODO: Implement getters and setters
 
+    public Map<String, BigDecimal> getProducts() {
+        return products;
+    }
 
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
+
+    public void setProducts(Map<String, BigDecimal> products) {
+        this.products = products;
+    }
     // TODO: Override toString - Expected output:
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        String productos = "";
+        map.forEach((key, value)) -> productos +  '\'' + key+": $"+value.setScale(1,BigDecimal.ROUND_DOWN).toString()
+        return "Customer= " + customer + '\''  +
+                 productos +
+                '}';
+    }
 
     /*
     Customer: John Doe
