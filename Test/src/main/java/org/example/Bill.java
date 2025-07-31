@@ -3,6 +3,7 @@ package org.example;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Bill {
 
@@ -46,11 +47,10 @@ public class Bill {
 
     @java.lang.Override
     public java.lang.String toString() {
-        String productos = "";
-        map.forEach((key, value)) -> productos +  '\'' + key+": $"+value.setScale(1,BigDecimal.ROUND_DOWN).toString()
-        return "Customer= " + customer + '\''  +
-                 productos +
-                '}';
+        String productsstring = products.entrySet().stream().map(entry -> entry.getKey()+": $"+entry.getValue()).collect(Collectors.joining("\n"));
+
+        return "Customer: " + customer + '\n'+ '\n'  +
+                 productsstring+ '\n';
     }
 
     /*
